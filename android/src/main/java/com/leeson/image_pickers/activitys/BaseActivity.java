@@ -21,7 +21,6 @@ import androidx.core.content.ContextCompat;
 
 /**
  * Created by lisen on 2018/4/12.
- * Modified to disable navigation bar.
  */
 @SuppressWarnings("all")
 public abstract class BaseActivity extends AppCompatActivity {
@@ -32,7 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        // --- Logic to hide Navigation Bar ---
+        // --- Added: Logic to hide Navigation Bar ---
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             getWindow().setDecorFitsSystemWindows(false);
             WindowInsetsController controller = getWindow().getInsetsController();
@@ -144,10 +143,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // Original methods used by sub-classes
-    public void permissionSuccess(int requestCode) {}
+    // These are the methods required for subclasses like PermissionActivity to compile
+    public void permissionSuccess(int requestCode) {
+    }
 
-    public void permissionFail(int requestCode) {}
+    public void permissionFail(int requestCode) {
+    }
 
-    public void permissonNecessity(int requestCode) {}
+    public void permissonNecessity(int requestCode) {
+    }
 }
