@@ -21,7 +21,6 @@ import androidx.core.content.ContextCompat;
 
 /**
  * Created by lisen on 2018/4/12.
- * Modified to disable navigation bar.
  */
 @SuppressWarnings("all")
 public abstract class BaseActivity extends AppCompatActivity {
@@ -32,7 +31,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        // Disable Navigation Bar logic
+        // --- Added: Hide Navigation Bar Logic ---
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             getWindow().setDecorFitsSystemWindows(false);
             WindowInsetsController controller = getWindow().getInsetsController();
@@ -48,6 +47,7 @@ public abstract class BaseActivity extends AppCompatActivity {
                           | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION;
             decorView.setSystemUiVisibility(uiOptions);
         }
+        // ----------------------------------------
     }
 
     public void requestPermission(String[] permissions, int requestCode) {
@@ -144,6 +144,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    // These are the missing methods causing your current errors:
     public void permissionSuccess(int requestCode) { }
 
     public void permissionFail(int requestCode) { }
