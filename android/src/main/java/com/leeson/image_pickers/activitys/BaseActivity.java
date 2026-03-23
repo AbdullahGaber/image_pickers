@@ -143,7 +143,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // These are the methods required for subclasses like PermissionActivity to compile
     public void permissionSuccess(int requestCode) {
     }
 
